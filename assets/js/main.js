@@ -12,7 +12,9 @@ $(document).ready(function () {
             data:JSON.stringify(data),
             dataType: 'json',
             success: (res) =>{
-                console.log(res.body)
+                console.log(res)
+                document.querySelector(".single_hadith").innerHTML=res.html
+                // document.querySelector('head').innerHTML += res.css
             }
 
         }).catch((error) => {
