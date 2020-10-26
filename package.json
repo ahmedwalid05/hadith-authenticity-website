@@ -1,0 +1,11 @@
+{
+  "name": "hadith-authenticity",
+  "version": "1.0.0",
+  "description": "Project To check hadith authenticity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
