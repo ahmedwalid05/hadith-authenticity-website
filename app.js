@@ -43,19 +43,28 @@ app.post('/urn', function (req, res) {
     // console.log(data2);
     let data2 = qs.stringify({
         key: "AIzaSyBFRS72i24zKkjsRn3TwXDXBcAsMiEHU6s",
-        cx: "ef8afaba8f6e63814",
+        cx: "4537f34681d714128",
         q: req.body.hadith
     })
 
     console.log(req.body)
     // theUrl = 'https://customsearch.googleapis.com/customsearch/v1/siterestrict'
     console.log(data2);
-    axios.get(`https://www.googleapis.com/customsearch/v1/siterestrict?${data2}`)
+    axios.get(`https://www.googleapis.com/customsearch/v1/?${data2}`)
         .then(response => {
             console.log(`statusCode: ${response.status}`)
-            let link = response.data.items[0].link
+            console.log(response?.data);
+            let link = response?.data?.items?.[0]?.link
+            console.log(link);
+            if (!link){
+                res.status(404).send('Not Found');
+                return
+            }
+            // let link = items[0]?.link;
             // let link = "https://sunnah.com/urn/804950"
-            let urn = link.slice(-1)[0];
+            
+            // var urn = link.slice(-1)[0];
+            var urn = link;
             console.log(urn);
             axios({
                 method: 'get',
@@ -76,20 +85,20 @@ app.post('/urn', function (req, res) {
                 let searchText = stripTashkeel(req.body.hadith);
                 // searchText.removeWhitespace();
 
-                
 
-                
+
+
                 // console.log(`arab: ${arabic}\n engl:${english}`)
-                
 
-                
+
+
 
                 var temp;
                 if (isArabic(searchText)) {
                     temp = root.querySelector('.arabic_text_details').removeWhitespace().innerText
-                    
+
                 } else {
-                    temp  = root.querySelector('.text_details').removeWhitespace().innerText;
+                    temp = root.querySelector('.text_details').removeWhitespace().innerText;
                 }
                 // console.log(temp)
                 // root.removeAttribute(".hadith_nav_wrapper");
@@ -110,7 +119,7 @@ app.post('/urn', function (req, res) {
                 // var s = levenshtein(fullHadith, searchText);
                 // console.log(s)
                 // var percentage = (1-s/fullHadith.length)*100;
-                
+
                 res.send({ 'html': root.querySelector('.single_hadith').innerHTML, 'match': percentage });
                 // res.send(root.querySelector('.single_hadith'));
                 // res.send(response.body.hadith)
