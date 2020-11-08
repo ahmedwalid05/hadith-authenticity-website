@@ -207,15 +207,20 @@ footer #bottom-footer {
   margin-right: auto;
   width: 50%;
   height: 30px;
-  background-color: grey;
+  background-color: rgb(139, 138, 110);
+  outline: auto;
+  outline-style: round;
 }
 
 #myBar {
   /* position: absolute; */
+  outline: auto;
+  outline-style: round;
   text-align: center;
+  font-size: large;
   width: 1%;
   height: 30px;
-  background-color: green;
+  background-color: rgba(8, 122, 8, 0.699);
 }
 #match{
   margin-top: 20px;

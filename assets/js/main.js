@@ -26,6 +26,8 @@ $(document).ready(function () {
                         var grade = document.querySelectorAll(".english_grade")[1].innerHTML
                     // document.querySelector('#myProgress').innerHTML = 
                     document.querySelector('#myBar').style.width = ((match * 100) | 0).toString() + "%";
+                    document.querySelector('#myBar').innerHTML = ((match * 100) | 0).toString() + "%";
+
                     if (!grade) {
                         document.querySelector('#match').innerHTML = `<b>The Hadith you typed matches this Hadith by ${((match * 100) | 0).toString() + "%"}</b>`
                     }
